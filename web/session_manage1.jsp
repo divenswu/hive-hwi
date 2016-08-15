@@ -33,12 +33,12 @@
 	String resultFile=request.getParameter("resultFile");
 	//String query = request.getParameter("query");
 	//String silent = request.getParameter("silent");
-	String start = request.getParameter("start");
+	//String start = request.getParameter("start");
 	String tablename = request.getParameter("table");
 	String qq = "select * from logdb."+tablename;
 %>
 <%
-	if (request.getParameter("start")!=null ){
+
 		if ( sess.getStatus()==HWISessionItem.WebSessionItemStatus.READY){
 			//sess.setErrorFile(errorFile);
 			sess.setResultFile(resultFile);
@@ -53,12 +53,12 @@
 //				sess.setSSIsSilent(false);
 
 			message="Changes accepted.";
-			if (start.equalsIgnoreCase("YES") ){
+
 				sess.clientStart();
 				message="Session is set to start.";
-			}
+
 		}
-	}
+
 %>
 <!DOCTYPE html>
 <html>
@@ -135,14 +135,7 @@
 
 
 
-					<div class="control-group">
-						<label class="control-label" for="fldstart">Start Query</label>
-						<div class="controls">
-							<select id="fldstart" name="start">
-								<option value="YES" SELECTED="TRUE">YES</option>
-							</select>
-						</div>
-					</div>
+
 
 				</fieldset>
 
