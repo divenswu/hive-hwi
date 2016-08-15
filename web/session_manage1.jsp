@@ -46,10 +46,7 @@
 
 				sess.addQuery(qq);
 
-			if (query.length()==0){
-				message="You did not specify a query";
-				start="NO";
-			}
+
 //			if (silent.equalsIgnoreCase("YES") )
 //				sess.setSSIsSilent(true);
 //			else
