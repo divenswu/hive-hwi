@@ -146,15 +146,6 @@
 
 				</fieldset>
 
-				<h3>Query Return Codes</h3>
-				<p>
-					<% for (int i=0; i< sess.getQueryRet().size();++i ){ %>
-					<%=i%>
-					:
-					<%=sess.getQueryRet().get(i)%><br>
-					<% } %>
-				</p>
-
 				<% if (sess.getStatus()!=HWISessionItem.WebSessionItemStatus.QUERY_RUNNING) { %>
 				<div class="form-actions">
 					<button type="submit" class="btn btn-primary">查询</button>

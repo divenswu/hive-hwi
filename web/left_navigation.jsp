@@ -19,7 +19,6 @@
   <li class="nav-header">User</li>
   <li><a href="index.jsp"><i class="icon-home"></i> Home</a></li>
   <li><a href="authorize.jsp"><i class="icon-lock"></i> Authorize</a></li>
-  <li><a href="session_manage1.jsp"><i class="icon-search"></i> Browse Schema</a></li>
   <li class="nav-header">Database</li>
   <li><a href="show_databases.jsp"><i class="icon-search"></i> Browse Schema</a></li>
   <li class="nav-header">Sessions</li>
