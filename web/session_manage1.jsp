@@ -31,7 +31,7 @@
 <%
 	//String errorFile=request.getParameter("errorFile");
 	String resultFile=request.getParameter("resultFile");
-	String query = request.getParameter("query");
+	//String query = request.getParameter("query");
 	//String silent = request.getParameter("silent");
 	String start = request.getParameter("start");
 	String tablename = request.getParameter("table");
