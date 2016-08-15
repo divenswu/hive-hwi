@@ -17,6 +17,7 @@
  * limitations under the License.
  */
 --%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@page import="org.apache.hadoop.hive.hwi.*" %>
 <%@page errorPage="error_page.jsp" %>
 <% HWISessionManager hs = (HWISessionManager) application.getAttribute("hs");; %>
@@ -33,12 +34,12 @@
 	String resultFile=request.getParameter("resultFile");
 	//String query = request.getParameter("query");
 	//String silent = request.getParameter("silent");
-	//String start = request.getParameter("start");
+	String start = request.getParameter("start");
 	String tablename = request.getParameter("table");
 	String qq = "select * from logdb."+tablename;
 %>
 <%
-
+	if (request.getParameter("start")!=null ){
 		if ( sess.getStatus()==HWISessionItem.WebSessionItemStatus.READY){
 			//sess.setErrorFile(errorFile);
 			sess.setResultFile(resultFile);
@@ -53,12 +54,12 @@
 //				sess.setSSIsSilent(false);
 
 			message="Changes accepted.";
-
+			if (start.equalsIgnoreCase("YES") ){
 				sess.clientStart();
 				message="Session is set to start.";
-
+			}
 		}
-
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -124,7 +125,7 @@
 
 
 					<div class="control-group">
-						<label class="control-label" for="fldquery">Query</label>
+						<label class="control-label" for="fldquery">tableName</label>
 						<div class="controls">
 							<select id="fldquery" name="table">
 								<option value="logfile" SELECTED="TRUE">rainbow-service</option>
@@ -135,7 +136,14 @@
 
 
 
-
+					<div class="control-group">
+						<label class="control-label" for="fldstart">Start Query</label>
+						<div class="controls">
+							<select id="fldstart" name="start">
+								<option value="YES" SELECTED="TRUE">YES</option>
+							</select>
+						</div>
+					</div>
 
 				</fieldset>
 
@@ -150,7 +158,7 @@
 
 				<% if (sess.getStatus()!=HWISessionItem.WebSessionItemStatus.QUERY_RUNNING) { %>
 				<div class="form-actions">
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="submit" class="btn btn-primary">查询</button>
 				</div>
 
 				<% } %>
