@@ -33,20 +33,19 @@
 	String resultFile=request.getParameter("resultFile");
 	String query = request.getParameter("query");
 	//String silent = request.getParameter("silent");
-	String start = request.getParameter("start");
+	String tablename = request.getParameter("table");
 %>
 <%
-	if (request.getParameter("start")!=null ){
+
 		if ( sess.getStatus()==HWISessionItem.WebSessionItemStatus.READY){
 			//sess.setErrorFile(errorFile);
 			sess.setResultFile(resultFile);
 			sess.clearQueries();
-			for (String q : query.split(";") ){
+			String q="select * from logdb."+tablename;
 				sess.addQuery(q);
-			}
+
 			if (query.length()==0){
 				message="You did not specify a query";
-				start="NO";
 			}
 //			if (silent.equalsIgnoreCase("YES") )
 //				sess.setSSIsSilent(true);
@@ -54,12 +53,11 @@
 //				sess.setSSIsSilent(false);
 
 			message="Changes accepted.";
-			if (start.equalsIgnoreCase("YES") ){
-				sess.clientStart();
-				message="Session is set to start.";
-			}
+			sess.clientStart();
+			message="Session is set to start.";
+
 		}
-	}
+
 %>
 <!DOCTYPE html>
 <html>
@@ -138,20 +136,14 @@
 										}
 									%>
 								</textarea>
-						</div>
-					</div>
-
-
-
-					<div class="control-group">
-						<label class="control-label" for="fldstart">Start Query</label>
-						<div class="controls">
-							<select id="fldstart" name="start">
-								<option value="NO" SELECTED="TRUE">NO</option>
-								<option value="YES">YES</option>
+							<select name="table">
+								<option value="logfile" SELECTED="TRUE">rainbow-service</option>
+								<option value="logfile">rainbow-service</option>
 							</select>
 						</div>
 					</div>
+
+
 
 				</fieldset>
 
