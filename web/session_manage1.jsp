@@ -131,7 +131,7 @@
 						<div class="controls">
 							<select id="fldquery" name="table">
 								<option value="logfile" SELECTED="TRUE">rainbow-service</option>
-								<option value="logfile">rainbow-console</option>
+								<option value="logfile">rainbow-console1</option>
 							</select>
 						</div>
 					</div>
