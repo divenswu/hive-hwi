@@ -116,8 +116,7 @@
                     if (sess.getResultFile()==null) { out.print(""); } else { out.print(sess.getResultFile()); }
                  %>">
 							<% if (sess.getResultFile()!=null) { %>
-							<a href="/hwi/view_file.jsp?sessionName=<%=sessionName%>">View
-								File</a>
+							<a href="/hwi/view_file.jsp?sessionName=<%=sessionName%>">查看结果</a>
 							<% } %>
 						</div>
 					</div>
@@ -125,7 +124,7 @@
 
 
 					<div class="control-group">
-						<label class="control-label" for="fldquery">tableName</label>
+						<label class="control-label" for="fldquery">Table Name</label>
 						<div class="controls">
 							<select id="fldquery" name="table">
 								<option value="logfile" SELECTED="TRUE">rainbow-service</option>
