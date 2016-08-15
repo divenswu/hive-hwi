@@ -38,7 +38,7 @@
 	String qq = "select * from logdb."+tablename;
 %>
 <%
-	if (request.getParameter("start")!=null ){
+
 		if ( sess.getStatus()==HWISessionItem.WebSessionItemStatus.READY){
 			//sess.setErrorFile(errorFile);
 			sess.setResultFile(resultFile);
@@ -56,12 +56,12 @@
 //				sess.setSSIsSilent(false);
 
 			message="Changes accepted.";
-			if (start.equalsIgnoreCase("YES") ){
+
 				sess.clientStart();
 				message="Session is set to start.";
-			}
+
 		}
-	}
+
 %>
 <!DOCTYPE html>
 <html>
@@ -129,20 +129,9 @@
 					<div class="control-group">
 						<label class="control-label" for="fldquery">Query</label>
 						<div class="controls">
-								<textarea id="fldquery" name="query" rows="8" cols="70">
-									<%
-										if (sess.getQueries()==null) {
-											out.print("");
-										} else {
-											for (String qu: sess.getQueries() ) {
-												out.print(qu); out.print(" ; ");
-											}
-										}
-									%>
-								</textarea>
 							<select name="table">
-								<option value="logfile" SELECTED="TRUE">logfile</option>
-								<option value="logfile">logfile</option>
+								<option value="logfile" SELECTED="TRUE">rainbow-service</option>
+								<option value="logfile">rainbow-console</option>
 							</select>
 						</div>
 					</div>
