@@ -40,13 +40,10 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body style="padding-top: 60px;">
-    <jsp:include page="/navbar.jsp"></jsp:include>
+
 	<div class="container">
 		<div class="row">
-			<div class="span4">
-				<jsp:include page="/left_navigation.jsp" />
-			</div><!-- span4 -->
-			<div class="span8">
+			<div class="span12">
 				<h2>Hive Web Interface</h2>
 				<p><%=sess.getResultFile() %></p>
 				<pre>
@@ -70,7 +67,7 @@
 				of
 				<%=bsize%>
 				blocks. <a
-					href="/hwi/view_file.jsp?sessionName=<%=sessionName%>&start=<%=(start+1) %>&bsize=<%=bsize %>">Next
+					href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>&start=<%=(start+1) %>&bsize=<%=bsize %>">Next
 					Block</a>
 			</div><!-- span8 -->
 		</div><!-- row -->
