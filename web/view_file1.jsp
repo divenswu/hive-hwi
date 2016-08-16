@@ -40,7 +40,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body style="padding-top: 60px;">
-
+    <jsp:include page="/navbar.jsp"></jsp:include>
 	<div class="container">
 		<div class="row">
 			<div class="span12">

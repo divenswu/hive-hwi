@@ -35,8 +35,35 @@
 	//String query = request.getParameter("query");
 	//String silent = request.getParameter("silent");
 	String start = request.getParameter("start");
+
 	String tablename = request.getParameter("table");
-	String qq = "select * from log."+tablename;
+	String starttime = request.getParameter("startTime");
+	String endtime = request.getParameter("endTime");
+	String source = request.getParameter("source");
+	String console = request.getParameter("console");
+	String method = request.getParameter("method");
+
+
+	String qq = "select * from log."+tablename + "where 1=1";
+	String queryCondition = "";
+	if(starttime!=null ){
+		String st="["+starttime;
+		queryCondition += " and datatime >= " +st;
+    }
+	if(endtime!=null ){
+		String et="["+endtime;
+		queryCondition += " and datatime <= " +et;
+	}
+	if(source!=null ){
+		queryCondition += " and source like '%" + source + "%'";
+	}
+	if(console!=null ){
+		queryCondition += " and console like '%" + console + "%'";
+	}
+	if(method!=null ){
+		queryCondition += " and method like '%" + method + "%'";
+	}
+	qq+=queryCondition;
 %>
 <%
 	if (request.getParameter("start")!=null ){
@@ -71,10 +98,7 @@
 <jsp:include page="/navbar.jsp"></jsp:include>
 <div class="container">
 	<div class="row">
-		<div class="span4">
-			<jsp:include page="/left_navigation.jsp" />
-		</div><!-- span4 -->
-		<div class="span8">
+		<div class="span12">
 			<h2>
 				Manage Session
 				<%=sessionName%></h2>
@@ -132,10 +156,43 @@
 						</div>
 					</div>
 
+					<div class="control-group">
+						<label class="control-label" for="fldstarttime">开始时间</label>
+						<div class="controls">
+							<input id="fldstarttime"type="text" name="startTime">
+						</div>
+						<label class="control-label" for="fldendttime">结束时间</label>
+						<div class="controls">
+							<input id="fldendttime"type="text" name="endTime">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="fldsource">日志来源</label>
+						<div class="controls">
+							<input id="fldsource"type="text" name="source">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="fldconsole">日志等级</label>
+						<div class="controls">
+							<select id="fldconsole" name="console">
+								<option value="INFO" SELECTED="TRUE">INFO</option>
+								<option value="DEBUG">DEBUG</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="fldmethod">产生日志的方法</label>
+						<div class="controls">
+							<input id="fldmethod" type="text" name="method">
+						</div>
+					</div>
+
 
 
 					<div class="control-group">
-						<label class="control-label" for="fldstart">Start Query</label>
+						<label class="control-label" for="fldstart">是否查询</label>
 						<div class="controls">
 							<select id="fldstart" name="start">
 								<option value="YES" SELECTED="TRUE">YES</option>
