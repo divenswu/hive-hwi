@@ -115,7 +115,7 @@
 								<option value="tmpLogFile" SELECTED="TRUE">tmpLogFile</option>
 							</select>
 							<% if (sess.getResultFile()!=null) { %>
-							<a href="/hwi/view_file.jsp?sessionName=<%=sessionName%>">查看结果</a>
+							<a href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>">查看结果</a>
 							<% } %>
 						</div>
 					</div>
