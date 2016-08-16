@@ -62,7 +62,7 @@
 		queryCondition += " and method like '%" + method + "%'";
 	}
 	if(queryCondition!=null ){
-		queryCondition ="where console="+console+queryCondition;
+		queryCondition ="where console=["+console+"]"+queryCondition;
 		qq+=queryCondition;
 	}
 
