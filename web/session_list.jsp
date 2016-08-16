@@ -59,7 +59,7 @@
 							<td><%=item.getSessionName()%></td>
 							<td><%=item.getStatus()%></td>
 							<td><a
-								href="/hwi/session_manage1.jsp?sessionName=<%=item.getSessionName()%>">Manager</a></td>
+								href="/hwi/session_manage2.jsp?sessionName=<%=item.getSessionName()%>">Manager</a></td>
 						</tr>
 						<% } %>
 						<% } %>
