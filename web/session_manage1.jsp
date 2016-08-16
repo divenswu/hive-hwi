@@ -36,7 +36,7 @@
 	//String silent = request.getParameter("silent");
 	String start = request.getParameter("start");
 	String tablename = request.getParameter("table");
-	String qq = "select * from logdb."+tablename;
+	String qq = "select * from log."+tablename;
 %>
 <%
 	if (request.getParameter("start")!=null ){
@@ -111,10 +111,9 @@
 					<div class="control-group">
 						<label class="control-label" for="fldresfile">Result File</label>
 						<div class="controls">
-							<input id="fldresfile" type="text" name="resultFile"
-								   value="<%
-                    if (sess.getResultFile()==null) { out.print(""); } else { out.print(sess.getResultFile()); }
-                 %>">
+							<select id="fldresfile" name="resultFile">
+								<option value="tmpLogFile" SELECTED="TRUE">tmpLogFile</option>
+							</select>
 							<% if (sess.getResultFile()!=null) { %>
 							<a href="/hwi/view_file.jsp?sessionName=<%=sessionName%>">查看结果</a>
 							<% } %>
@@ -127,8 +126,8 @@
 						<label class="control-label" for="fldquery">Table Name</label>
 						<div class="controls">
 							<select id="fldquery" name="table">
-								<option value="logfile" SELECTED="TRUE">rainbow-service</option>
-								<option value="logfile">rainbow-console1</option>
+								<option value="rainbow_service_log" SELECTED="TRUE">rainbow_service_log</option>
+								<option value="rainbow_conn_log">rainbow_conn_log</option>
 							</select>
 						</div>
 					</div>
