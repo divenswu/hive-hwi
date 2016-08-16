@@ -17,8 +17,6 @@
  * limitations under the License.
  */
 --%>
-
-<%@ page import="org.apache.hadoop.hive.hwi.*,java.io.*" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@page import="org.apache.hadoop.hive.hwi.*" %>
 <%@page errorPage="error_page.jsp" %>
@@ -90,20 +88,6 @@
 				message="Session is set to start.";
 			}
 		}
-	}
-%>
-
-
-
-
-<% int start1=0;
-	if (request.getParameter("start")!=null){
-		start1 = Integer.parseInt( request.getParameter("start1") );
-	}
-%>
-<% int bsize=10240;
-	if (request.getParameter("bsize")!=null){
-		bsize = Integer.parseInt( request.getParameter("bsize") );
 	}
 %>
 <!DOCTYPE html>
@@ -185,7 +169,7 @@
 									<option value="tmpLogFile" SELECTED="TRUE">结果文件：</option>
 								</select>
 								<% if (sess.getResultFile()!=null) { %>
-								<a href="/hwi/session_manage2.jsp?sessionName=<%=sessionName%>">查看结果</a>
+								<a href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>">查看结果</a>
 								<% } %>
 							</td>
 							<td height="left" bgcolor="#F5F5F5">是否查询：
@@ -211,39 +195,5 @@
 		</div><!-- span8 -->
 	</div><!-- row -->
 </div><!-- container -->
-
-<div class="container">
-	<div class="row">
-		<div class="span12">
-			<h2>Hive Web Interface</h2>
-			<p><%=sess.getResultFile() %></p>
-				<pre>
-					<%
-						File f = new File(   sess.getResultFile()  );
-						BufferedReader br = new BufferedReader( new FileReader(f) );
-						br.skip(start1*bsize);
-
-						char [] c = new char [bsize] ;
-						int cread=-1;
-
-						if( ( cread=br.read(c)) != -1 ){
-							out.println( c );
-						}
-						br.close();
-					%>
-          </pre>
-			<% long numberOfBlocks = f.length()/ (long)bsize;%>
-			This file contains
-			<%=numberOfBlocks%>
-			of
-			<%=bsize%>
-			blocks. <a
-				href="/hwi/session_manage2.jsp?sessionName=<%=sessionName%>&start=<%=(start1-1) %>&bsize=<%=bsize %>">上一页</a>
-			<a
-					href="/hwi/session_manage2.jsp?sessionName=<%=sessionName%>&start=<%=(start1+1) %>&bsize=<%=bsize %>">下一页</a>
-		</div><!-- span8 -->
-	</div><!-- row -->
-</div><!-- container -->
 </body>
 </html>
-
