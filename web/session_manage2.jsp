@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 --%>
+
+<%@ page import="org.apache.hadoop.hive.hwi.*,java.io.*" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@page import="org.apache.hadoop.hive.hwi.*" %>
 <%@page errorPage="error_page.jsp" %>
@@ -90,6 +92,20 @@
 		}
 	}
 %>
+
+
+
+
+<% int start1=0;
+	if (request.getParameter("start")!=null){
+		start1 = Integer.parseInt( request.getParameter("start1") );
+	}
+%>
+<% int bsize=10240;
+	if (request.getParameter("bsize")!=null){
+		bsize = Integer.parseInt( request.getParameter("bsize") );
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,25 +143,13 @@
 				<input type="hidden" name="sessionName" value="<%=sessionName %>">
 
 				<fieldset>
-					<legend>Session Details	</legend>
-					<div class="control-group">
-						<label class="control-label" for="fldresfile">Result File</label>
-						<div class="controls">
-							<select id="fldresfile" name="resultFile">
-								<option value="tmpLogFile" SELECTED="TRUE">tmpLogFile</option>
-							</select>
-							<% if (sess.getResultFile()!=null) { %>
-							<a href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>">查看结果</a>
-							<% } %>
-						</div>
-					</div>
-
+					<legend>日志查询界面</legend>
 
 					<div class="control-group">
 					<table width="90%" border="1" cellspacing="0" align="center">
 
 						<tr>
-							<td width="44%" height="33" bgcolor="#F5F5F5">表名：
+							<td width="44%" height="33" bgcolor="#F5F5F5">存储表名：
 								<select id="fldquery1" name="table">
 									<option value="rainbow_service_log" SELECTED="TRUE">rainbow_service_log</option>
 									<option value="rainbow_conn_log">rainbow_conn_log</option>
@@ -171,22 +175,29 @@
 							<td height="45" bgcolor="#F5F5F5">日志来源：
 								<input id="fldsource1"type="text" name="source">
 							</td>
-							<td height="left" bgcolor="#F5F5F5">产生日志的方法：
+							<td height="left" bgcolor="#F5F5F5">产生接口：
 								<input id="fldmethod1" type="text" name="method">
+							</td>
+						</tr>
+						<tr>
+							<td height="45" bgcolor="#F5F5F5">查看结果：
+								<select id="fldresfile1" name="resultFile">
+									<option value="tmpLogFile" SELECTED="TRUE">结果文件：</option>
+								</select>
+								<% if (sess.getResultFile()!=null) { %>
+								<a href="/hwi/session_manage2.jsp?sessionName=<%=sessionName%>">查看结果</a>
+								<% } %>
+							</td>
+							<td height="left" bgcolor="#F5F5F5">是否查询：
+								<select id="fldstart1" name="start">
+									<option value="YES" SELECTED="TRUE">YES</option>
+								</select>
 							</td>
 						</tr>
 					</table>
 					</div>
 
 
-					<div class="control-group">
-						<label class="control-label" for="fldstart">是否查询</label>
-						<div class="controls">
-							<select id="fldstart" name="start">
-								<option value="YES" SELECTED="TRUE">YES</option>
-							</select>
-						</div>
-					</div>
 
 				</fieldset>
 
@@ -200,5 +211,39 @@
 		</div><!-- span8 -->
 	</div><!-- row -->
 </div><!-- container -->
+
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<h2>Hive Web Interface</h2>
+			<p><%=sess.getResultFile() %></p>
+				<pre>
+					<%
+						File f = new File(   sess.getResultFile()  );
+						BufferedReader br = new BufferedReader( new FileReader(f) );
+						br.skip(start1*bsize);
+
+						char [] c = new char [bsize] ;
+						int cread=-1;
+
+						if( ( cread=br.read(c)) != -1 ){
+							out.println( c );
+						}
+						br.close();
+					%>
+          </pre>
+			<% long numberOfBlocks = f.length()/ (long)bsize;%>
+			This file contains
+			<%=numberOfBlocks%>
+			of
+			<%=bsize%>
+			blocks. <a
+				href="/hwi/session_manage2.jsp?sessionName=<%=sessionName%>&start=<%=(start1-1) %>&bsize=<%=bsize %>">上一页</a>
+			<a
+					href="/hwi/session_manage2.jsp?sessionName=<%=sessionName%>&start=<%=(start1+1) %>&bsize=<%=bsize %>">下一页</a>
+		</div><!-- span8 -->
+	</div><!-- row -->
+</div><!-- container -->
 </body>
 </html>
+
