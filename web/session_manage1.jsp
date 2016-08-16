@@ -42,7 +42,7 @@
 	String source = request.getParameter("source");
 	String console = request.getParameter("console");
 	String method = request.getParameter("method");
-
+//
 
 	String qq = "select * from log."+tablename;
 	String queryCondition = "";
