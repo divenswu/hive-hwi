@@ -24,7 +24,7 @@
 <% } %>
 <% String sessionName=request.getParameter("sessionName"); %>
 <% HWISessionItem sess = hs.findSessionItemByName(auth,sessionName);	%>
-<% int start=1;
+<% int start=0;
    if (request.getParameter("start")!=null){
      start = Integer.parseInt( request.getParameter("start") );
    }

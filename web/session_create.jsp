@@ -51,6 +51,7 @@
 <head>
 <title>Hive Web Interface-Create a Hive Session</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 </head>
 <body style="padding-top: 60px;">
     <jsp:include page="/navbar.jsp"></jsp:include>
@@ -76,7 +77,7 @@
 						<button type="submit" class="btn btn-primary">Submit</button>
 					</div>
 				</form>
-
+				<input id="dt" class="Wdate" type="text" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"/>
 			</div><!-- span8 -->
 		</div><!-- row -->
 	</div><!-- container -->
