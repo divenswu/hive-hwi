@@ -36,7 +36,7 @@
 				message="This name is already in use";
 			} else {
 				hs.createSession(auth,sessionName);
-				RequestDispatcher rd = application.getRequestDispatcher("/session_manage1.jsp");
+				RequestDispatcher rd = application.getRequestDispatcher("/session_manage2.jsp");
 				rd.forward(request,response);
 			}
 		}

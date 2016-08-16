@@ -24,7 +24,7 @@
 <% } %>
 <% String sessionName=request.getParameter("sessionName"); %>
 <% HWISessionItem sess = hs.findSessionItemByName(auth,sessionName);	%>
-<% int start=0; 
+<% int start=1;
    if (request.getParameter("start")!=null){
      start = Integer.parseInt( request.getParameter("start") );
    }
@@ -42,6 +42,9 @@
 </head>
 <body style="padding-top: 60px;">
     <jsp:include page="/navbar.jsp"></jsp:include>
+	<div class="form-actions">
+		<a href="/hwi/session_manage2.jsp?sessionName=<%=sessionName%>">返回查询界面</a>
+	</div>
 	<div class="container">
 		<div class="row">
 			<div class="span12">

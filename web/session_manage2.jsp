@@ -166,7 +166,7 @@
 						<tr>
 							<td height="45" bgcolor="#F5F5F5">查看结果：
 								<select id="fldresfile1" name="resultFile">
-									<option value="tmpLogFile" SELECTED="TRUE">结果文件：</option>
+									<option value="tmpLogFile" SELECTED="TRUE">tmpLogFile</option>
 								</select>
 								<% if (sess.getResultFile()!=null) { %>
 								<a href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>">查看结果</a>
