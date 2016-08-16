@@ -17,13 +17,13 @@
  * limitations under the License.
  */
 --%>
-<%@ page language="java" pageEncoding="UTF-8"%>
-<%@page errorPage="error_page.jsp" %>
+<%--<%@ page language="java" pageEncoding="UTF-8"%>--%>
+<%--<%@page errorPage="error_page.jsp" %>--%>
 <%@ page import="org.apache.hadoop.hive.hwi.*,java.io.*" %>
 <% HWIAuth auth = (HWIAuth) session.getAttribute("auth"); %>
 <% HWISessionManager hs = (HWISessionManager) application.getAttribute("hs"); %>
 <% if (auth==null) { %>
-<jsp:forward page="/authorize.jsp" />
+<%--<jsp:forward page="/authorize.jsp" />--%>
 <% } %>
 <% String sessionName=request.getParameter("sessionName"); %>
 <% HWISessionItem sess = hs.findSessionItemByName(auth,sessionName);	%>
