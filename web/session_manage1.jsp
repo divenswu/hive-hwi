@@ -48,11 +48,11 @@
 	String queryCondition = "";
 	if(starttime!=null ){
 		String st="'["+starttime+"'";
-		queryCondition += " and datatime >= " +st;
+		queryCondition += " and datetime >= " +st;
     }
 	if(endtime!=null ){
 		String et="'["+endtime+"'";
-		queryCondition += " and datatime <= " +et;
+		queryCondition += " and datetime <= " +et;
 	}
 	if(source!=null ){
 		queryCondition += " and source like '%" + source + "%'";
