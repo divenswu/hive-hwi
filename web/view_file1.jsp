@@ -66,11 +66,9 @@
 			%>
           </pre>
 				<% long numberOfBlocks = f.length()/ (long)bsize;%>
-				This file contains
+				文件包含
 				<%=numberOfBlocks%>
-				of
-				<%=bsize%>
-				blocks. <a
+				页. <a
 					href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>&start=<%=(start-1) %>&bsize=<%=bsize %>">上一页</a>
 				        <a
 					href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>&start=<%=(start+1) %>&bsize=<%=bsize %>">下一页</a>
