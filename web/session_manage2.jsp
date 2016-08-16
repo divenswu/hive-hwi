@@ -95,6 +95,7 @@
 <head>
 	<title>Manage Session <%=sessionName%></title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 </head>
 <body style="padding-top: 60px;">
 <jsp:include page="/navbar.jsp"></jsp:include>
@@ -148,7 +149,8 @@
 						</tr>
 						<tr>
 							<td height="45" bgcolor="#F5F5F5">开始时间：
-								<input id="fldstarttime1"type="text" name="startTime">
+								<%--<input id="fldstarttime1"type="text" name="startTime">--%>
+								<input id="fldstarttime1" class="Wdate" type="text" name="startTime" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
 							</td>
 
 							<td align="left" bgcolor="#F5F5F5">结束时间：
