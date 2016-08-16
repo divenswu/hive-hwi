@@ -154,7 +154,8 @@
 							</td>
 
 							<td align="left" bgcolor="#F5F5F5">结束时间：
-								<input id="fldendttime1"type="text" name="endTime">
+								<%--<input id="fldendttime1"type="text" name="endTime">--%>
+								<input id="fldendttime1" class="Wdate" type="text" name="endTime" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
 							</td>
 						</tr>
 						<tr>
