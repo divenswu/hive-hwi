@@ -47,11 +47,11 @@
 	String qq = "select * from log."+tablename;
 	String queryCondition = "";
 	if(starttime!=null ){
-		String st="["+starttime;
+		String st="'["+starttime+"'";
 		queryCondition += " and datatime >= " +st;
     }
 	if(endtime!=null ){
-		String et="["+endtime;
+		String et="'["+endtime+"'";
 		queryCondition += " and datatime <= " +et;
 	}
 	if(source!=null ){
