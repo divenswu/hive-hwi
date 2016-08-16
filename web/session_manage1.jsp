@@ -18,16 +18,41 @@
  */
 --%>
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@page import="org.apache.hadoop.hive.hwi.*" %>
 <%@page errorPage="error_page.jsp" %>
-<% HWISessionManager hs = (HWISessionManager) application.getAttribute("hs");; %>
-
+<%@ page import="org.apache.hadoop.hive.hwi.*,java.io.*" %>
 <% HWIAuth auth = (HWIAuth) session.getAttribute("auth"); %>
+<% HWISessionManager hs = (HWISessionManager) application.getAttribute("hs"); %>
 <% if (auth==null) { %>
 <jsp:forward page="/authorize.jsp" />
 <% } %>
 <% String sessionName=request.getParameter("sessionName"); %>
-<% HWISessionItem sess = hs.findSessionItemByName(auth,sessionName); %>
+<% HWISessionItem sess = hs.findSessionItemByName(auth,sessionName);	%>
+<% int start1=0;
+	if (request.getParameter("start1")!=null){
+		start1 = Integer.parseInt( request.getParameter("start1") );
+	}
+%>
+<% int bsize=10240;
+	if (request.getParameter("bsize")!=null){
+		bsize = Integer.parseInt( request.getParameter("bsize") );
+	}
+%>
+
+
+
+
+
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@page import="org.apache.hadoop.hive.hwi.*" %>
+<%@page errorPage="error_page.jsp" %>
+<%--<% HWISessionManager hs = (HWISessionManager) application.getAttribute("hs");; %>--%>
+
+<%--<% HWIAuth auth = (HWIAuth) session.getAttribute("auth"); %>--%>
+<% if (auth==null) { %>
+<jsp:forward page="/authorize.jsp" />
+<% } %>
+<%--<% String sessionName=request.getParameter("sessionName"); %>--%>
+<%--<% HWISessionItem sess = hs.findSessionItemByName(auth,sessionName); %>--%>
 <% String message=null; %>
 <%
 	//String errorFile=request.getParameter("errorFile");
@@ -100,7 +125,10 @@
 <jsp:include page="/navbar.jsp"></jsp:include>
 <div class="container">
 	<div class="row">
-		<div class="span12">
+		<div class="span4">
+			<jsp:include page="/left_navigation.jsp" />
+		</div><!-- span4 -->
+		<div class="span8">
 			<h2>
 				Manage Session
 				<%=sessionName%></h2>
@@ -141,7 +169,7 @@
 								<option value="tmpLogFile" SELECTED="TRUE">tmpLogFile</option>
 							</select>
 							<% if (sess.getResultFile()!=null) { %>
-							<a href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>">查看结果</a>
+							<a href="/hwi/session_manage1.jsp?sessionName=<%=sessionName%>">查看结果</a>
 							<% } %>
 						</div>
 					</div>
@@ -214,5 +242,37 @@
 		</div><!-- span8 -->
 	</div><!-- row -->
 </div><!-- container -->
+<div class="container1">
+	<div class="row">
+		<div class="span12">
+			<h2>Hive Web Interface</h2>
+			<p><%=sess.getResultFile() %></p>
+				<pre>
+					<%
+						File f = new File(   sess.getResultFile()  );
+						BufferedReader br = new BufferedReader( new FileReader(f) );
+						br.skip(start1*bsize);
+
+						char [] c = new char [bsize] ;
+						int cread=-1;
+
+						if( ( cread=br.read(c)) != -1 ){
+							out.println( c );
+						}
+						br.close();
+					%>
+          </pre>
+			<% long numberOfBlocks = f.length()/ (long)bsize;%>
+			This file contains
+			<%=numberOfBlocks%>
+			of
+			<%=bsize%>
+			blocks. <a
+				href="/hwi/session_manage1.jsp?sessionName=<%=sessionName%>&start1=<%=(start1-1) %>&bsize=<%=bsize %>">上一页</a>
+			<a
+					href="/hwi/session_manage1.jsp?sessionName=<%=sessionName%>&start1=<%=(start1+1) %>&bsize=<%=bsize %>">下一页</a>
+		</div><!-- span8 -->
+	</div><!-- row -->
+</div><!-- container1 -->
 </body>
 </html>

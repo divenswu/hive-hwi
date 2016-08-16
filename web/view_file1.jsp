@@ -14,6 +14,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 --%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@page errorPage="error_page.jsp" %>
 <%@ page import="org.apache.hadoop.hive.hwi.*,java.io.*" %>
 <% HWIAuth auth = (HWIAuth) session.getAttribute("auth"); %>
@@ -28,7 +29,7 @@
      start = Integer.parseInt( request.getParameter("start") );
    }
 %>
-<% int bsize=1024; 
+<% int bsize=10240;
    if (request.getParameter("bsize")!=null){
      bsize = Integer.parseInt( request.getParameter("bsize") );
    }
@@ -67,8 +68,9 @@
 				of
 				<%=bsize%>
 				blocks. <a
-					href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>&start=<%=(start+1) %>&bsize=<%=bsize %>">Next
-					Block</a>
+					href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>&start=<%=(start-1) %>&bsize=<%=bsize %>">上一页</a>
+				        <a
+					href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>&start=<%=(start+1) %>&bsize=<%=bsize %>">下一页</a>
 			</div><!-- span8 -->
 		</div><!-- row -->
 	</div><!-- container -->
