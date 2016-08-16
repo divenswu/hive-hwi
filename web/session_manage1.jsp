@@ -44,7 +44,7 @@
 	String method = request.getParameter("method");
 
 
-	String qq = "select * from log."+tablename + "where 1=1";
+	String qq = "select * from log."+tablename;
 	String queryCondition = "";
 	if(starttime!=null ){
 		String st="["+starttime;
@@ -57,13 +57,15 @@
 	if(source!=null ){
 		queryCondition += " and source like '%" + source + "%'";
 	}
-	if(console!=null ){
-		queryCondition += " and console like '%" + console + "%'";
-	}
+
 	if(method!=null ){
 		queryCondition += " and method like '%" + method + "%'";
 	}
-	qq+=queryCondition;
+	if(queryCondition!=null ){
+		queryCondition ="where console="+console+queryCondition;
+		qq+=queryCondition;
+	}
+
 %>
 <%
 	if (request.getParameter("start")!=null ){
