@@ -42,6 +42,8 @@
 	String source = request.getParameter("source");
 	String console = request.getParameter("console");
 	String method = request.getParameter("method");
+	String describe = request.getParameter("describe");
+	String instance = request.getParameter("instance");
 //
 
 	String qq = "select * from log."+tablename;
@@ -61,6 +63,14 @@
 	if(method!=null ){
 		queryCondition += " and method like '%" + method + "%'";
 	}
+	if(describe!=null ){
+		queryCondition += " and describe like '%" + describe + "%'";
+	}
+	if(instance!=null && instance!=""){
+		String ins="'"+instance+"'";
+		queryCondition += " and datetime=" +ins;
+	}
+
 	if(queryCondition!=null ){
 		queryCondition =" where console like '%" + console + "%'"+queryCondition;
 		qq+=queryCondition;
@@ -167,6 +177,22 @@
 							</td>
 						</tr>
 						<tr>
+							<td height="45" bgcolor="#F5F5F5">实例来源：
+								<select id="fldinstance1" name="instance">
+									<option value="rbt1">rbt1</option>
+									<option value="rbt2">rbt2</option>
+								</select>
+							</td>
+							<td height="left" bgcolor="#F5F5F5">传递参数：
+								<input id="flddescribe1" type="text" name="describe">
+							</td>
+						</tr>
+						<tr>
+							<td height="left" bgcolor="#F5F5F5">是否查询：
+								<select id="fldstart1" name="start">
+									<option value="YES" SELECTED="TRUE">YES</option>
+								</select>
+							</td>
 							<td height="45" bgcolor="#F5F5F5">查看结果：
 								<select id="fldresfile1" name="resultFile">
 									<option value="tmpLogFile" SELECTED="TRUE">tmpLogFile</option>
@@ -175,11 +201,7 @@
 								<a href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>">查看结果</a>
 								<% } %>
 							</td>
-							<td height="left" bgcolor="#F5F5F5">是否查询：
-								<select id="fldstart1" name="start">
-									<option value="YES" SELECTED="TRUE">YES</option>
-								</select>
-							</td>
+
 						</tr>
 					</table>
 					</div>
