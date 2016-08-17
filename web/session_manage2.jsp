@@ -50,11 +50,11 @@
 	String queryCondition = "";
 	if(starttime!=null && starttime!=""){
 		String st="'["+starttime+"'";
-		queryCondition += " and datetime>=" +st;
+		queryCondition += " and datetime >=" +st;
     }
 	if(endtime!=null && endtime!=""){
 		String et="'["+endtime+"'";
-		queryCondition += " and datetime<=" +et;
+		queryCondition += " and datetime <=" +et;
 	}
 	if(source!=null ){
 		queryCondition += " and source like '%" + source + "%'";
@@ -68,7 +68,7 @@
 	}
 	if(instance!=null && instance!=""){
 		String ins="'"+instance+"'";
-		queryCondition += " and datetime=" +ins;
+		queryCondition += " and instance =" +ins;
 	}
 
 	if(queryCondition!=null ){
@@ -178,10 +178,7 @@
 						</tr>
 						<tr>
 							<td height="45" bgcolor="#F5F5F5">实例来源：
-								<select id="fldinstance1" name="instance">
-									<option value="rbt1">rbt1</option>
-									<option value="rbt2">rbt2</option>
-								</select>
+								<input id="fldinstance1" type="text" name="instance">
 							</td>
 							<td height="left" bgcolor="#F5F5F5">传递参数：
 								<input id="flddescribe1" type="text" name="describe">
