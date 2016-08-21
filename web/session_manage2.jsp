@@ -17,10 +17,24 @@
  * limitations under the License.
  */
 --%>
+
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@page import="org.apache.hadoop.hive.hwi.*" %>
 <%@page errorPage="error_page.jsp" %>
-<% HWISessionManager hs = (HWISessionManager) application.getAttribute("hs");; %>
+
+<%@ page import="java.util.*"%>
+<%@ page import="java.text.*"%>
+<%
+	Calendar c = Calendar.getInstance();
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	c.add(Calendar.DATE, -3);
+	//System.out.println(sdf.format(c.getTime()));
+	String datetime=sdf.format(c.getTime());
+	String q1="alter table rainbow_service_log drop partition (data<='"+datetime+"')";
+
+%>
+
+<% HWISessionManager hs = (HWISessionManager) application.getAttribute("hs"); %>
 
 <% HWIAuth auth = (HWIAuth) session.getAttribute("auth"); %>
 <% if (auth==null) { %>
@@ -83,8 +97,8 @@
 			//sess.setErrorFile(errorFile);
 			sess.setResultFile(resultFile);
 			sess.clearQueries();
-
-				sess.addQuery(qq);
+			sess.addQuery(q1);
+			sess.addQuery(qq);
 
 
 //			if (silent.equalsIgnoreCase("YES") )
