@@ -168,6 +168,7 @@
 								<select id="fldconsole1" name="console">
 									<option value="INFO" SELECTED="TRUE">INFO</option>
 									<option value="DEBUG">DEBUG</option>
+									<option value="WARN">DEBUG</option>
 								</select>
 							</td>
 						</tr>
