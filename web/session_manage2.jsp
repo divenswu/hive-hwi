@@ -30,7 +30,7 @@
 	c.add(Calendar.DATE, -3);
 	//System.out.println(sdf.format(c.getTime()));
 	String datetime=sdf.format(c.getTime());
-	String q1="alter table log.rainbow_service_log drop partition (date<='"+datetime+"')";
+	String q1="alter table log.rainbow_service_log drop partition (date<'"+datetime+"')";
 
 %>
 
