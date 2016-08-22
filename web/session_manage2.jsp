@@ -61,34 +61,34 @@
 //
 
 	String qq = "select * from log."+tablename;
-//	String queryCondition = "";
-//	if(starttime!=null && starttime!=""){
-//		String st="'["+starttime+"'";
-//		queryCondition += " and datetime >=" +st;
-//    }
-//	if(endtime!=null && endtime!=""){
-//		String et="'["+endtime+"'";
-//		queryCondition += " and datetime <=" +et;
-//	}
-//	if(source!=null ){
-//		queryCondition += " and source like '%" + source + "%'";
-//	}
-//
-//	if(method!=null ){
-//		queryCondition += " and method like '%" + method + "%'";
-//	}
-//	if(describe!=null ){
-//		queryCondition += " and describe like '%" + describe + "%'";
-//	}
-//	if(instance!=null && instance!=""){
-//		String ins="'"+instance+"'";
-//		queryCondition += " and instance =" +ins;
-//	}
-//
-//	if(queryCondition!=null ){
-//		queryCondition =" where console like '%" + console + "%'"+queryCondition;
-//		qq+=queryCondition;
-//	}
+	String queryCondition = "";
+	if(starttime!=null && starttime!=""){
+		String st="'["+starttime+"'";
+		queryCondition += " and datetime >=" +st;
+    }
+	if(endtime!=null && endtime!=""){
+		String et="'["+endtime+"'";
+		queryCondition += " and datetime <=" +et;
+	}
+	if(source!=null ){
+		queryCondition += " and source like '%" + source + "%'";
+	}
+
+	if(method!=null ){
+		queryCondition += " and method like '%" + method + "%'";
+	}
+	if(describe!=null ){
+		queryCondition += " and describe like '%" + describe + "%'";
+	}
+	if(instance!=null && instance!=""){
+		String ins="'"+instance+"'";
+		queryCondition += " and instance =" +ins;
+	}
+
+	if(queryCondition!=null ){
+		queryCondition =" where console like '%" + console + "%'"+queryCondition;
+		qq+=queryCondition;
+	}
 
 %>
 <%
@@ -168,6 +168,7 @@
 							<td height="45" bgcolor="#F5F5F5">日志等级：
 								<select id="fldconsole1" name="console">
 									<option value="INFO" SELECTED="TRUE">INFO</option>
+									<option value="ERROR">ERROR</option>
 									<option value="DEBUG">DEBUG</option>
 									<option value="WARN">WARN</option>
 								</select>
