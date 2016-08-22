@@ -162,13 +162,14 @@
 								<select id="fldquery1" name="table">
 									<option value="rainbow_service_log" SELECTED="TRUE">rainbow_service_log</option>
 									<option value="rainbow_conn_log">rainbow_conn_log</option>
+									<option value="rainbow_conn_log">test_log</option>
 								</select>
 							</td>
 							<td height="45" bgcolor="#F5F5F5">日志等级：
 								<select id="fldconsole1" name="console">
 									<option value="INFO" SELECTED="TRUE">INFO</option>
 									<option value="DEBUG">DEBUG</option>
-									<option value="WARN">DEBUG</option>
+									<option value="WARN">WARN</option>
 								</select>
 							</td>
 						</tr>
