@@ -39,9 +39,17 @@
 	String datetime2=sdf.format(c2.getTime());
 
 	String q="alter table log.rainbow_service_log drop partition (date<'"+datetime+"')";
-	String q1="alter table log.rainbow_service_log add if not exists partition (date='"+datetime+"',instance='rbt4')";
-	String q2="alter table log.rainbow_service_log add if not exists partition (date='"+datetime1+"',instance='rbt4')";
-	String q3="alter table log.rainbow_service_log add if not exists partition (date='"+datetime2+"',instance='rbt4')";
+	String q11="alter table log.rainbow_service_log add if not exists partition (date='"+datetime+"',instance='rbt1')";
+	String q12="alter table log.rainbow_service_log add if not exists partition (date='"+datetime1+"',instance='rbt1')";
+	String q13="alter table log.rainbow_service_log add if not exists partition (date='"+datetime2+"',instance='rbt1')";
+
+	String q21="alter table log.rainbow_service_log add if not exists partition (date='"+datetime+"',instance='rbt2')";
+	String q22="alter table log.rainbow_service_log add if not exists partition (date='"+datetime1+"',instance='rbt2')";
+	String q23="alter table log.rainbow_service_log add if not exists partition (date='"+datetime2+"',instance='rbt2')";
+
+	String q31="alter table log.rainbow_service_log add if not exists partition (date='"+datetime+"',instance='rbt3')";
+	String q32="alter table log.rainbow_service_log add if not exists partition (date='"+datetime1+"',instance='rbt3')";
+	String q33="alter table log.rainbow_service_log add if not exists partition (date='"+datetime2+"',instance='rbt3')";
 
 %>
 
@@ -108,10 +116,19 @@
 			//sess.setErrorFile(errorFile);
 			sess.setResultFile(resultFile);
 			sess.clearQueries();
+
+			sess.addQuery(q11);
+			sess.addQuery(q12);
+			sess.addQuery(q13);
+
+			sess.addQuery(q21);
+			sess.addQuery(q22);
+			sess.addQuery(q23);
+
+			sess.addQuery(q31);
+			sess.addQuery(q32);
+			sess.addQuery(q33);
 			sess.addQuery(q);
-			sess.addQuery(q1);
-			sess.addQuery(q2);
-			sess.addQuery(q3);
 			sess.addQuery(qq);
 
 
