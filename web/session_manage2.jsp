@@ -28,20 +28,15 @@
 	Calendar c = Calendar.getInstance();
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	c.add(Calendar.DATE, -3);
-	//System.out.println(sdf.format(c.getTime()));
 	String datetime=sdf.format(c.getTime());
 
 	Calendar c1 = Calendar.getInstance();
-	SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
 	c1.add(Calendar.DATE, -2);
-	//System.out.println(sdf.format(c.getTime()));
-	String datetime1=sdf1.format(c.getTime());
+	String datetime1=sdf.format(c1.getTime());
 
 	Calendar c2 = Calendar.getInstance();
-	SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
 	c2.add(Calendar.DATE, -1);
-	//System.out.println(sdf.format(c.getTime()));
-	String datetime2=sdf2.format(c.getTime());
+	String datetime2=sdf.format(c2.getTime());
 
 	String q="alter table log.rainbow_service_log drop partition (date<'"+datetime+"')";
 	String q1="alter table log.rainbow_service_log add if not exists partition (date='"+datetime+"',instance='rbt4')";
