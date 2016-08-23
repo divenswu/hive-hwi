@@ -27,15 +27,15 @@
 <%
 	Calendar c = Calendar.getInstance();
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	c.add(Calendar.DATE, -3);
+	c.add(Calendar.DATE, -2);
 	String datetime=sdf.format(c.getTime());
 
 	Calendar c1 = Calendar.getInstance();
-	c1.add(Calendar.DATE, -2);
+	c1.add(Calendar.DATE, -1);
 	String datetime1=sdf.format(c1.getTime());
 
 	Calendar c2 = Calendar.getInstance();
-	c2.add(Calendar.DATE, -1);
+	c2.add(Calendar.DATE,0);
 	String datetime2=sdf.format(c2.getTime());
 
 	String q="alter table log.rainbow_service_log drop partition (date<'"+datetime+"')";
