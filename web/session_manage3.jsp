@@ -87,7 +87,7 @@
 	}
 
 	if(queryCondition!=null ){
-		queryCondition =" where describe like '%" + describe + "%'"+queryCondition;
+		queryCondition =" where describe like '%" + describe + "%' or describe like 'at ' "+queryCondition;
 		qq+=queryCondition;
 	}
 
