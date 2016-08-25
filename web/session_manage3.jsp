@@ -51,6 +51,10 @@
 	String q32="alter table log.rainbow_service_log_test add if not exists partition (date='"+datetime1+"',instance='rbt3')";
 	String q33="alter table log.rainbow_service_log_test add if not exists partition (date='"+datetime2+"',instance='rbt3')";
 
+	String q41="alter table log.rainbow_service_log_test add if not exists partition (date='"+datetime+"',instance='rbt4')";
+	String q42="alter table log.rainbow_service_log_test add if not exists partition (date='"+datetime1+"',instance='rbt4')";
+	String q43="alter table log.rainbow_service_log_test add if not exists partition (date='"+datetime2+"',instance='rbt4')";
+
 %>
 
 <% HWISessionManager hs = (HWISessionManager) application.getAttribute("hs"); %>
@@ -110,6 +114,11 @@
 			sess.addQuery(q31);
 			sess.addQuery(q32);
 			sess.addQuery(q33);
+
+			sess.addQuery(q41);
+			sess.addQuery(q42);
+			sess.addQuery(q43);
+
 			sess.addQuery(q);
 			sess.addQuery(qq);
 
