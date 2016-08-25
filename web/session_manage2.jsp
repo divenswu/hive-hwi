@@ -114,6 +114,9 @@
 
 %>
 <%
+
+%>
+<%
 	if (request.getParameter("start")!=null ){
 		if ( sess.getStatus()==HWISessionItem.WebSessionItemStatus.READY){
 			//sess.setErrorFile(errorFile);
