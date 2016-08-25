@@ -69,10 +69,10 @@
 				文件包含
 				<%=numberOfBlocks%>
 				页.
-				<%--<% if (start==0) { %>首页--%>
-				<%--<%}else{%>--%>
+				<% if (start==0) { %>首页
+				<%}else{%>
 				<a href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>&start=<%=(start-1) %>&bsize=<%=bsize %>">上一页</a>
-				<%--<% } %>--%>
+				<% } %>
 				<%--<% if (start==numberOfBlocks){ %>末页--%>
 				<%--<%}else{%>--%>
 				<a href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>&start=<%=(start+1) %>&bsize=<%=bsize %>">下一页</a>

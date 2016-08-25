@@ -266,12 +266,12 @@
 
 				</fieldset>
 
-				<% if (sess.getStatus()!=HWISessionItem.WebSessionItemStatus.QUERY_RUNNING) { %>
+				<%--<% if (sess.getStatus()!=HWISessionItem.WebSessionItemStatus.QUERY_RUNNING) { %>--%>
 				<div class="form-actions">
 					<button type="submit" class="btn btn-primary">查询</button>
 				</div>
 
-				<% } %>
+				<%--<% } %>--%>
 			</form>
 		</div><!-- span8 -->
 	</div><!-- row -->
