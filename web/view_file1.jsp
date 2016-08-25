@@ -68,10 +68,13 @@
 				<% long numberOfBlocks = f.length()/ (long)bsize;%>
 				文件包含
 				<%=numberOfBlocks%>
-				页. <a
-					href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>&start=<%=(start-1) %>&bsize=<%=bsize %>">上一页</a>
-				        <a
-					href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>&start=<%=(start+1) %>&bsize=<%=bsize %>">下一页</a>
+				页.
+				<% if (start>=0) { %>
+				<a href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>&start=<%=(start-1) %>&bsize=<%=bsize %>">上一页</a>
+				<% } %>
+				<% if (start<=bsize) { %>
+				<a href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>&start=<%=(start+1) %>&bsize=<%=bsize %>">下一页</a>
+				<% } %>
 			</div><!-- span8 -->
 		</div><!-- row -->
 	</div><!-- container -->
