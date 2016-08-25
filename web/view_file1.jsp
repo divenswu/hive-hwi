@@ -73,10 +73,10 @@
 				<%}else{%>
 				<a href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>&start=<%=(start-1) %>&bsize=<%=bsize %>">上一页</a>
 				<% } %>
-				<% if (start==numberOfBlocks) { %>末页
-				<%}else{%>
+				<%--<% if (start==numberOfBlocks){ %>末页--%>
+				<%--<%}else{%>--%>
 				<a href="/hwi/view_file1.jsp?sessionName=<%=sessionName%>&start=<%=(start+1) %>&bsize=<%=bsize %>">下一页</a>
-				<% } %>
+				<%--<% } %>--%>
 			</div><!-- span8 -->
 		</div><!-- row -->
 	</div><!-- container -->
