@@ -114,7 +114,6 @@
 		if (starttime != null && starttime != "") {
 			String st = "'[" + starttime + "'";
 			queryCondition += " and datetime >=" + st;
-			queryCondition += " and date =" + st;
 			String dT=starttime.substring(0,10);
 			String tT=starttime.substring(11,13);
 			queryCondition += " and date =" + dT;
