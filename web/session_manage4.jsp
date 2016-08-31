@@ -80,8 +80,6 @@
 	String method = request.getParameter("method");
 	String describe = request.getParameter("describe");
 	String instance = request.getParameter("instance");
-	String count = request.getParameter("count");
-	Integer Icount=Integer.parseInt(count);
 //
 
 	String qq = "select * from log."+tablename;
@@ -110,7 +108,7 @@
 	}
 
 	if(queryCondition!=null ){
-		queryCondition =" where console like '%" + console + "%'"+queryCondition+"limit "+Icount;
+		queryCondition =" where console like '%" + console + "%'"+queryCondition;
 		qq+=queryCondition;
 	}
 
@@ -260,11 +258,6 @@
 								<% } %>
 							</td>
 
-						</tr>
-						<tr>
-							<td height="45" bgcolor="#F5F5F5">输入条数：
-								<input id="fldcount1" type="text" name="count">
-							</td>
 						</tr>
 					</table>
 					</div>
