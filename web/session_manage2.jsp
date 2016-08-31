@@ -39,7 +39,7 @@
 	String datetime2=sdf.format(c2.getTime());
 
 	String q="alter table log.rainbow_service_log drop partition (date<'"+datetime+"')";
-	String q="alter table log.test_log drop partition (date<'"+datetime+"')";
+	String q2="alter table log.test_log drop partition (date<'"+datetime+"')";
 	String q11="alter table log.rainbow_service_log add if not exists partition (date='"+datetime+"',instance='rbt1')";
 	String q12="alter table log.rainbow_service_log add if not exists partition (date='"+datetime1+"',instance='rbt1')";
 	String q13="alter table log.rainbow_service_log add if not exists partition (date='"+datetime2+"',instance='rbt1')";
@@ -164,6 +164,31 @@
 			sess.setResultFile(resultFile);
 			sess.clearQueries();
 
+			sess.addQuery(q101);
+			sess.addQuery(q102);
+			sess.addQuery(q103);
+			sess.addQuery(q104);
+			sess.addQuery(q105);
+			sess.addQuery(q106);
+			sess.addQuery(q107);
+			sess.addQuery(q108);
+			sess.addQuery(q109);
+			sess.addQuery(q110);
+			sess.addQuery(q111);
+			sess.addQuery(q112);
+			sess.addQuery(q113);
+			sess.addQuery(q114);
+			sess.addQuery(q115);
+			sess.addQuery(q116);
+			sess.addQuery(q117);
+			sess.addQuery(q118);
+			sess.addQuery(q119);
+			sess.addQuery(q120);
+			sess.addQuery(q121);
+			sess.addQuery(q122);
+			sess.addQuery(q123);
+			sess.addQuery(q124);
+
 			sess.addQuery(q11);
 			sess.addQuery(q12);
 			sess.addQuery(q13);
@@ -181,6 +206,7 @@
 			sess.addQuery(q43);
 
 			sess.addQuery(q);
+			sess.addQuery(q2);
 			sess.addQuery(qq);
 
 
