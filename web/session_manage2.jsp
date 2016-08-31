@@ -39,7 +39,7 @@
 	String datetime2=sdf.format(c2.getTime());
 
 	String q="alter table log.rainbow_service_log drop partition (date<'"+datetime+"')";
-	String q2="alter table log.test_log drop partition (date<'"+datetime+"')";
+	String q2="alter table log.test_log drop partition (date<'"+datetime2+"')";
 	String q11="alter table log.rainbow_service_log add if not exists partition (date='"+datetime+"',instance='rbt1')";
 	String q12="alter table log.rainbow_service_log add if not exists partition (date='"+datetime1+"',instance='rbt1')";
 	String q13="alter table log.rainbow_service_log add if not exists partition (date='"+datetime2+"',instance='rbt1')";
