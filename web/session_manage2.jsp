@@ -108,7 +108,7 @@
 	}
 
 	if(queryCondition!=null ){
-		queryCondition =" where console like '%" + console + "%'"+queryCondition+"limit 10";
+		queryCondition =" where console like '%" + console + "%'"+queryCondition+"limit 50";
 		qq+=queryCondition;
 	}
 
