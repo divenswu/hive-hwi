@@ -39,6 +39,7 @@
 	String datetime2=sdf.format(c2.getTime());
 
 	String q="alter table log.rainbow_service_log drop partition (date<'"+datetime+"')";
+	String q="alter table log.test_log drop partition (date<'"+datetime+"')";
 	String q11="alter table log.rainbow_service_log add if not exists partition (date='"+datetime+"',instance='rbt1')";
 	String q12="alter table log.rainbow_service_log add if not exists partition (date='"+datetime1+"',instance='rbt1')";
 	String q13="alter table log.rainbow_service_log add if not exists partition (date='"+datetime2+"',instance='rbt1')";
@@ -54,6 +55,31 @@
 	String q41="alter table log.rainbow_service_log add if not exists partition (date='"+datetime+"',instance='rbt4')";
 	String q42="alter table log.rainbow_service_log add if not exists partition (date='"+datetime1+"',instance='rbt4')";
 	String q43="alter table log.rainbow_service_log add if not exists partition (date='"+datetime2+"',instance='rbt4')";
+
+	String q101="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='01',instance='rbt1')";
+	String q102="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='02',instance='rbt1')";
+	String q103="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='03',instance='rbt1')";
+	String q104="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='04',instance='rbt1')";
+	String q105="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='05',instance='rbt1')";
+	String q106="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='06',instance='rbt1')";
+	String q107="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='07',instance='rbt1')";
+	String q108="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='08',instance='rbt1')";
+	String q109="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='09',instance='rbt1')";
+	String q110="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='10',instance='rbt1')";
+	String q111="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='11',instance='rbt1')";
+	String q112="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='12',instance='rbt1')";
+	String q113="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='13',instance='rbt1')";
+	String q114="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='14',instance='rbt1')";
+	String q115="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='15',instance='rbt1')";
+	String q116="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='16',instance='rbt1')";
+	String q117="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='17',instance='rbt1')";
+	String q118="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='18',instance='rbt1')";
+	String q119="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='19',instance='rbt1')";
+	String q120="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='20',instance='rbt1')";
+	String q121="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='21',instance='rbt1')";
+	String q122="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='22',instance='rbt1')";
+	String q123="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='23',instance='rbt1')";
+	String q124="alter table log.test_log add if not exists partition (date='"+datetime2+"',time='24',instance='rbt1')";
 %>
 
 <% HWISessionManager hs = (HWISessionManager) application.getAttribute("hs"); %>
@@ -84,13 +110,29 @@
 
 	String qq = "select * from log."+tablename;
 	String queryCondition = "";
-	if(starttime!=null && starttime!=""){
-		String st="'["+starttime+"'";
-		queryCondition += " and datetime >=" +st;
-    }
-	if(endtime!=null && endtime!=""){
-		String et="'["+endtime+"'";
-		queryCondition += " and datetime <=" +et;
+	if(tablename=="test_log") {
+		if (starttime != null && starttime != "") {
+			String st = "'[" + starttime + "'";
+			queryCondition += " and datetime >=" + st;
+			queryCondition += " and date =" + st;
+			String dT=starttime.substring(0,10);
+			String tT=starttime.substring(11,13);
+			queryCondition += " and date =" + dT;
+			queryCondition += " and time =" + tT;
+		}
+		if (endtime != null && endtime != "") {
+			String et = "'[" + endtime + "'";
+			queryCondition += " and datetime <=" + et;
+		}
+	}else{
+	if (starttime != null && starttime != "") {
+		String st = "'[" + starttime + "'";
+		queryCondition += " and datetime >=" + st;
+	}
+	if (endtime != null && endtime != "") {
+		String et = "'[" + endtime + "'";
+		queryCondition += " and datetime <=" + et;
+	}
 	}
 	if(source!=null ){
 		queryCondition += " and source like '%" + source + "%'";
