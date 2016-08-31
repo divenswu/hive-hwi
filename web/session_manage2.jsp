@@ -81,7 +81,7 @@
 	String describe = request.getParameter("describe");
 	String instance = request.getParameter("instance");
 	String count = request.getParameter("count");
-	Integer Icount=Integer.parseInt(count);
+	int Icount=Integer.parseInt(count);
 //
 
 	String qq = "select * from log."+tablename;
