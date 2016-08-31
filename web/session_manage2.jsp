@@ -244,8 +244,7 @@
 			<% } %>
 
 			<% if (sess.getStatus()==HWISessionItem.WebSessionItemStatus.QUERY_RUNNING) { %>
-			<div class="alert alert-warning">Session is in QUERY_RUNNING
-				state. Changes are not possible!</div>
+			<div class="alert alert-warning">还在查询中，请稍后!</div>
 			<% } %>
 
 			<% if (sess.getStatus()==HWISessionItem.WebSessionItemStatus.QUERY_RUNNING){ %>
