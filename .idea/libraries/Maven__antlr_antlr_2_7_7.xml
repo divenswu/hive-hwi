@@ -2,12 +2,12 @@
   <library name="Maven: antlr:antlr:2.7.7">
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/antlr/antlr/2.7.7/antlr-2.7.7.jar!/" />
+      <root url="file://$MAVEN_REPOSITORY$/antlr/antlr/2.7.7" />
+      <root url="file://$MAVEN_REPOSITORY$/antlr/antlr/2.7.7" />
     </CLASSES>
-    <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/antlr/antlr/2.7.7/antlr-2.7.7-javadoc.jar!/" />
-    </JAVADOC>
-    <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/antlr/antlr/2.7.7/antlr-2.7.7-sources.jar!/" />
-    </SOURCES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$MAVEN_REPOSITORY$/antlr/antlr/2.7.7" recursive="false" />
+    <jarDirectory url="file://$MAVEN_REPOSITORY$/antlr/antlr/2.7.7" recursive="false" />
   </library>
 </component>

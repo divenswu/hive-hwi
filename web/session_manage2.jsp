@@ -268,9 +268,9 @@
 						<tr>
 							<td width="44%" height="33" bgcolor="#F5F5F5">存储表名：
 								<select id="fldquery1" name="table">
-									<option value="rainbow_service_log" SELECTED="TRUE">rainbow_service_log</option>
+									<option value="rainbow_service_log" >rainbow_service_log</option>
 									<option value="rainbow_conn_log">rainbow_conn_log</option>
-									<option value="test_log">test_log</option>
+									<option value="test_log" SELECTED="TRUE">test_log</option>
 								</select>
 							</td>
 							<td height="45" bgcolor="#F5F5F5">日志等级：
