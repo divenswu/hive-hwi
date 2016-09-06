@@ -294,18 +294,18 @@
 							</td>
 						</tr>
 						<tr>
-							<td height="45" bgcolor="#F5F5F5">日志来源：
+							<td height="45" bgcolor="#F5F5F5">模块名称：
 								<input id="fldsource1"type="text" name="source">
 							</td>
-							<td height="left" bgcolor="#F5F5F5">产生接口：
+							<td height="left" bgcolor="#F5F5F5">接口名称：
 								<input id="fldmethod1" type="text" name="method">
 							</td>
 						</tr>
 						<tr>
-							<td height="45" bgcolor="#F5F5F5">实例来源：
+							<td height="45" bgcolor="#F5F5F5">部署主机：
 								<input id="fldinstance1" type="text" name="instance">
 							</td>
-							<td height="left" bgcolor="#F5F5F5">传递参数：
+							<td height="left" bgcolor="#F5F5F5">日志内容：
 								<input id="flddescribe1" type="text" name="describe">
 							</td>
 						</tr>
